@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bikram Panthee · Power Systems & Optimization</title>
+  <meta name="description" content="Bikram Panthee — PhD researcher in Electrical Engineering at the University of Vermont, working on global optimization for power distribution grids, three-phase AC analysis, state estimation, and grid-aware EV charging infrastructure.">
+  <meta name="author" content="Bikram Panthee">
+  <meta property="og:title" content="Bikram Panthee · Power Systems & Optimization">
+  <meta property="og:description" content="Solving power-grid optimization problems to near-zero optimality gap.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    // Apply saved theme before paint to avoid a flash.
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><use href="#logo"/></svg>
+        <span>Bikram&nbsp;Panthee</span>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#lab">Interactive Lab</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="icon-btn nav__menu" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <canvas id="gridCanvas" class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow"><span class="pulse-dot"></span> PhD Researcher · Electrical Engineering · University of Vermont</p>
+          <h1>Bikram Panthee</h1>
+          <p class="hero__lede">I build <strong>optimization methods</strong> that make power distribution grids
+            <span class="hl">provably solvable</span>, taking hard nonconvex grid problems to a
+            <span class="hl">near-zero optimality gap</span>.</p>
+          <div class="formula" aria-label="Optimization problem">
+            <span>min<sub>x</sub>&nbsp;f(x)</span>
+            <span class="formula__sep">s.t.</span>
+            <span>AC power flow(x) = 0,&nbsp; l ≤ x ≤ u</span>
+            <span class="formula__gap">gap → <b id="gapTicker">0.00</b>%</span>
+          </div>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#publications">View publications</a>
+            <a class="btn" href="#lab">Try the interactive lab</a>
+            <a class="btn btn--ghost" href="assets/Bikram_Panthee_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+          </div>
+          <ul class="social" aria-label="Profiles">
+            <li><a href="https://scholar.google.com/citations?user=nFLG5-MAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-scholar"/></svg><span>Scholar</span></a></li>
+            <li><a href="https://www.linkedin.com/in/bikram-panthee-476bb7138/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-linkedin"/></svg><span>LinkedIn</span></a></li>
+            <li><a href="mailto:bpanthee@uvm.edu" aria-label="Email"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-mail"/></svg><span>Email</span></a></li>
+            <li><a href="https://github.com/pantheebikram" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-github"/></svg><span>GitHub</span></a></li>
+          </ul>
+        </div>
+        <figure class="hero__photo">
+          <div class="photo-ring">
+            <img src="assets/profile.jpg" alt="Portrait of Bikram Panthee" width="320" height="320"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="photo-fallback" aria-hidden="true">BP</div>
+          </div>
+          <figcaption>Burlington, Vermont · from Nepal 🇳🇵</figcaption>
+        </figure>
+      </div>
+
+      <dl class="stats">
+        <div><dt>Optimality gap achieved</dt><dd><span class="count" data-to="0" data-dec="2">0.00</span>%</dd></div>
+        <div><dt>Grid nodes solved to global optimality</dt><dd><span class="count" data-to="5000">0</span>+</dd></div>
+        <div><dt>Presolve compute-time reduction</dt><dd>up to <span class="count" data-to="97">0</span>%</dd></div>
+        <div><dt>Publications & preprints</dt><dd><span class="count" data-to="5">0</span></dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="section__head">
+        <p class="kicker">01 · About</p>
+        <h2>Engineering the grid with math you can trust</h2>
+      </div>
+      <div class="about">
+        <div class="about__bio">
+          <p>I am a PhD researcher in the <a href="https://www.uvm.edu/cems/ebe" target="_blank" rel="noopener">Department of Electrical &amp; Biomedical Engineering</a>
+            at the <strong>University of Vermont</strong>, advised by
+            <a href="https://www.amrit-pandey.com/" target="_blank" rel="noopener">Dr. Amritanshu Pandey</a>. I grew up in <strong>Nepal</strong>,
+            where an unreliable grid is a fact of everyday life, and that is part of why I care about getting power-system analysis right.</p>
+          <p>Modern distribution grids are unbalanced, three-phase, and full of new loads such as EV chargers, so the optimization problems that
+            describe them are <em>nonconvex</em> and hard. Off-the-shelf solvers often return a local solution with no guarantee of quality.
+            My work reformulates these problems as <strong>bilinear and mixed-integer bilinear programs</strong> and solves them with
+            <strong>spatial branch-and-bound</strong> enhanced by <strong>bound tightening and presolve</strong>, so the answer comes with a certificate:
+            a gap that is effectively zero.</p>
+          <p>I apply these methods to the problems utilities and planners care about: <em>Is this grid state even feasible? Where is it failing?
+            What is the true state of the network? Where should we build EV chargers so the grid can carry them?</em></p>
+          <div class="callout">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg>
+            <p><strong>Open to collaborations</strong> with utilities, grid-software companies, and national labs on research internships, industry R&amp;D, and
+              optimization-at-scale problems. <a href="#contact">Get in touch →</a></p>
+          </div>
+        </div>
+        <aside class="about__side">
+          <div class="card card--flat">
+            <h3 class="card__title">Research interests</h3>
+            <ul class="chips">
+              <li>Power System Optimization</li>
+              <li>Global / Nonconvex Optimization</li>
+              <li>Three-phase AC Power Flow</li>
+              <li>Distribution Grids</li>
+              <li>State Estimation</li>
+              <li>Spatial Branch-and-Bound</li>
+              <li>Mixed-Integer Programming</li>
+              <li>EV Charging Infrastructure</li>
+            </ul>
+          </div>
+          <div class="card card--flat">
+            <h3 class="card__title">At a glance</h3>
+            <ul class="facts">
+              <li><span>Position</span><b>PhD Researcher, UVM</b></li>
+              <li><span>Advisor</span><b>Dr. Amritanshu Pandey</b></li>
+              <li><span>Since</span><b>2023</b></li>
+              <li><span>Based in</span><b>Burlington, VT, USA</b></li>
+              <li><span>Home</span><b>Nepal</b></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ RESEARCH ============ -->
+    <section class="section section--alt" id="research">
+      <div class="section__head">
+        <p class="kicker">02 · Research</p>
+        <h2>Three threads, one toolkit</h2>
+        <p class="section__sub">Each problem is a hard nonconvex program. The common thread is a pipeline that turns it into one we can solve to certified global optimality.</p>
+      </div>
+
+      <!-- Method pipeline diagram -->
+      <figure class="pipeline" aria-label="Research method pipeline">
+        <ol>
+          <li><span class="step">1</span><b>Nonconvex grid model</b><small>Three-phase AC equations, unbalanced loads</small></li>
+          <li><span class="step">2</span><b>Bilinear reformulation</b><small>Expose the products that make it hard</small></li>
+          <li><span class="step">3</span><b>Presolve &amp; bound tightening</b><small>Shrink variable boxes, up to 97% faster</small></li>
+          <li><span class="step">4</span><b>Spatial branch-and-bound</b><small>Convex relaxations + partitioning</small></li>
+          <li class="is-final"><span class="step">✓</span><b>Certified solution</b><small>Optimality gap &lt; 10⁻⁴</small></li>
+        </ol>
+      </figure>
+
+      <div class="cards">
+        <article class="card research">
+          <div class="research__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M6 40 L16 22 L26 30 L42 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="42" cy="8" r="4" fill="currentColor"/></svg>
+          </div>
+          <h3>Three-phase AC infeasibility analysis</h3>
+          <p>When a grid's power-flow equations have no solution, operators need to know <em>where</em> and <em>by how much</em>. I reformulate the
+            nonconvex infeasibility problem as a bilinear program and solve it with spatial B&amp;B and bound tightening, scaling to
+            <strong>5,000+ node</strong> networks with gap &lt; 10⁻⁴.</p>
+          <p class="research__meta">HICSS-59 · arXiv:2508.15937</p>
+        </article>
+        <article class="card research">
+          <div class="research__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="24" cy="24" r="6" fill="currentColor"/><path d="M24 2v8M24 38v8M2 24h8M38 24h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Distribution grid state estimation</h3>
+          <p>State estimation recovers voltages and flows from noisy, sparse measurements. Local solvers can settle on the wrong state.
+            I extend the global-optimization pipeline to three-phase distribution state estimation and solve it to a
+            <strong>near-zero optimality gap</strong>.</p>
+          <p class="research__meta">Working paper · 2026</p>
+        </article>
+        <article class="card research">
+          <div class="research__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><rect x="10" y="6" width="20" height="36" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 16h4a4 4 0 0 1 4 4v12a3 3 0 0 0 6 0V14l-5-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M21 13l-5 10h6l-3 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Grid-aware EV charging placement</h3>
+          <p><strong>Grid-ECO</strong> places EV charging stations inside a distribution feeder using census-level demand, solving a mixed-integer
+            bilinear program to a <strong>0.00% gap</strong> on Seattle data (max 753 s), well ahead of commercial solvers. The related work in <em>Transportation Research Part D</em> adds equity and cost.</p>
+          <p class="research__meta">arXiv:2602.12473 · TR Part D 2026</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ INTERACTIVE LAB ============ -->
+    <section class="section" id="lab">
+      <div class="section__head">
+        <p class="kicker">03 · Interactive Lab</p>
+        <h2>See the ideas run in your browser</h2>
+        <p class="section__sub">Two small, honest demos of the concepts behind my research. They are simplified for teaching, not the production models from the papers.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Interactive demos">
+        <button role="tab" id="tab-bnb" aria-selected="true" aria-controls="panel-bnb">Spatial Branch-and-Bound</button>
+        <button role="tab" id="tab-feeder" aria-selected="false" aria-controls="panel-feeder" tabindex="-1">Grid-Aware EV Charging</button>
+      </div>
+
+      <!-- Demo 1: B&B -->
+      <div class="demo" role="tabpanel" id="panel-bnb" aria-labelledby="tab-bnb">
+        <div class="demo__main">
+          <canvas id="bnbCanvas" class="demo__canvas" height="380" aria-label="Plot of a nonconvex function with convex underestimators on each branch-and-bound node"></canvas>
+          <div class="legend">
+            <span><i class="sw sw--f"></i>f(x), nonconvex objective</span>
+            <span><i class="sw sw--lb"></i>convex underestimator (αBB)</span>
+            <span><i class="sw sw--ub"></i>best solution (upper bound)</span>
+            <span><i class="sw sw--pr"></i>pruned region</span>
+          </div>
+        </div>
+        <div class="demo__side">
+          <h3>Find the <em>global</em> minimum, with proof</h3>
+          <p>A local solver can get stuck in any valley. Branch-and-bound splits the domain, builds a convex lower bound on each piece, and
+            <strong>prunes</strong> pieces that cannot beat the best solution found so far. When the bounds meet, the solution is certified.</p>
+          <div class="metrics">
+            <div><span>Iteration</span><b id="bnbIter">0</b></div>
+            <div><span>Open nodes</span><b id="bnbOpen">1</b></div>
+            <div><span>Upper bound</span><b id="bnbUB">-</b></div>
+            <div><span>Lower bound</span><b id="bnbLB">-</b></div>
+            <div class="metrics__wide"><span>Optimality gap</span><b id="bnbGap">-</b>
+              <div class="bar"><i id="bnbGapBar"></i></div></div>
+          </div>
+          <label class="switch"><input type="checkbox" id="bnbTighten" checked><span></span>Bound tightening (presolve-style box reduction)</label>
+          <div class="btn-row">
+            <button class="btn btn--primary" id="bnbStep">Step</button>
+            <button class="btn" id="bnbRun">Run</button>
+            <button class="btn btn--ghost" id="bnbReset">Reset</button>
+          </div>
+          <p class="hint">Try running with and without bound tightening and compare the iteration counts.</p>
+        </div>
+      </div>
+
+      <!-- Demo 2: Feeder -->
+      <div class="demo" role="tabpanel" id="panel-feeder" aria-labelledby="tab-feeder" hidden>
+        <div class="demo__main">
+          <svg id="feederSvg" class="demo__svg" viewBox="0 60 640 290" role="img" aria-label="Radial distribution feeder; click buses to add EV chargers"></svg>
+          <div class="vprofile">
+            <div class="vprofile__head"><span>Bus voltage (p.u.)</span><span class="vprofile__lim">limit 0.95</span></div>
+            <div id="vBars" class="vbars"></div>
+          </div>
+        </div>
+        <div class="demo__side">
+          <h3>Can the feeder carry the chargers?</h3>
+          <p>Click a bus to add a <strong>150 kW</strong> fast charger (click again to add more, or right-click / long-press to remove). Voltages are computed with
+            the linearized <span class="mono">LinDistFlow</span> model. Chargers that look good on a map can still push the far end of a feeder below limits.</p>
+          <div class="metrics">
+            <div><span>Chargers</span><b id="fdCount">0</b></div>
+            <div><span>EV demand served</span><b id="fdServed">0%</b></div>
+            <div><span>Min voltage</span><b id="fdVmin">-</b></div>
+            <div><span>Status</span><b id="fdStatus">-</b></div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn--primary" id="fdOptimize">Grid-aware placement</button>
+            <button class="btn" id="fdNaive">Demand-only placement</button>
+            <button class="btn btn--ghost" id="fdClear">Clear</button>
+          </div>
+          <p class="hint">Both buttons place 8 chargers. “Demand-only” chases the busiest buses; “grid-aware” (a greedy heuristic here; Grid-ECO solves the exact MIBLP) respects voltage limits.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PUBLICATIONS ============ -->
+    <section class="section section--alt" id="publications">
+      <div class="section__head">
+        <p class="kicker">04 · Publications</p>
+        <h2>Papers &amp; preprints</h2>
+        <p class="section__sub">Full and up-to-date list on <a href="https://scholar.google.com/citations?user=nFLG5-MAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter publications">
+        <button class="chip-btn is-active" data-filter="all">All</button>
+        <button class="chip-btn" data-filter="journal">Journal</button>
+        <button class="chip-btn" data-filter="conference">Conference</button>
+        <button class="chip-btn" data-filter="preprint">Preprint</button>
+        <button class="chip-btn" data-filter="working">In progress</button>
+        <input type="search" id="pubSearch" placeholder="Search titles, authors…" aria-label="Search publications">
+      </div>
+      <ol class="pubs" id="pubList"></ol>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="section__head">
+        <p class="kicker">05 · Experience</p>
+        <h2>Academic &amp; industry path</h2>
+      </div>
+      <div class="exp">
+        <div>
+          <h3 class="exp__title">Experience</h3>
+          <ol class="timeline">
+            <li>
+              <span class="timeline__date">2023 to present</span>
+              <h4>Graduate Research Assistant</h4>
+              <p class="timeline__org">University of Vermont · Burlington, VT</p>
+              <p>Global optimization for three-phase distribution grids: infeasibility analysis, state estimation, and grid-aware EV infrastructure planning. Collaborations with Carnegie Mellon University and Colorado School of Mines.</p>
+            </li>
+            <!-- EDIT: add internships / industry roles here, e.g.
+            <li>
+              <span class="timeline__date">Summer 2025</span>
+              <h4>Power Systems Intern</h4>
+              <p class="timeline__org">Company · City</p>
+              <p>What you built and the impact.</p>
+            </li> -->
+            <li class="timeline__todo">
+              <span class="timeline__date">Earlier</span>
+              <h4>Previous role</h4>
+              <p class="timeline__org">Organization · Nepal</p>
+              <p>Add your pre-PhD engineering or industry experience here (edit <code>index.html</code>).</p>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <h3 class="exp__title">Education</h3>
+          <ol class="timeline">
+            <li>
+              <span class="timeline__date">2023 to present</span>
+              <h4>Ph.D., Electrical Engineering</h4>
+              <p class="timeline__org">University of Vermont</p>
+              <p>Advisor: Dr. Amritanshu Pandey. Focus: power system optimization, distribution grids.</p>
+            </li>
+            <li class="timeline__todo">
+              <span class="timeline__date">Year to year</span>
+              <h4>Bachelor's degree, Engineering</h4>
+              <p class="timeline__org">University · Nepal</p>
+              <p>Edit with your degree, institution, and honors.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="skills">
+        <h3 class="exp__title">Industry-ready toolkit</h3>
+        <div class="skills__grid">
+          <div class="card card--flat">
+            <h4>Optimization</h4>
+            <ul class="chips chips--sm">
+              <li>MINLP / MIBLP</li><li>Spatial B&amp;B</li><li>Bound tightening (OBBT/FBBT)</li><li>Convex relaxations</li><li>Presolve design</li><li>Pareto / multi-objective</li>
+            </ul>
+          </div>
+          <div class="card card--flat">
+            <h4>Power systems</h4>
+            <ul class="chips chips--sm">
+              <li>Three-phase AC power flow</li><li>Infeasibility analysis</li><li>State estimation</li><li>Hosting capacity</li><li>EV grid integration</li><li>Distribution planning</li>
+            </ul>
+          </div>
+          <div class="card card--flat">
+            <h4>Tools</h4>
+            <ul class="chips chips--sm">
+              <li>Python</li><li>Julia / JuMP</li><li>Gurobi</li><li>MATLAB</li><li>OpenDSS</li><li>Git</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEWS ============ -->
+    <section class="section section--alt" id="news">
+      <div class="section__head">
+        <p class="kicker">06 · News</p>
+        <h2>Recent updates</h2>
+      </div>
+      <ul class="news">
+        <li><time>2026</time><p>📄 <strong>“A unified framework for siting Level 2 EV charging infrastructure”</strong> published in <em>Transportation Research Part D</em>.</p></li>
+        <li><time>Feb 2026</time><p>⚡ Preprint <strong>Grid-ECO</strong> released on arXiv: grid-aware EV charging station placement solved to 0.00% gap.</p></li>
+        <li><time>Jan 2026</time><p>🌺 Three-phase AC infeasibility work at the <strong>59th Hawaii International Conference on System Sciences (HICSS-59)</strong>.</p></li>
+        <li><time>Aug 2025</time><p>🧮 Preprint <strong>“Solving Three-phase AC Infeasibility Analysis to Near-zero Optimality Gap”</strong> posted on arXiv.</p></li>
+        <li><time>2023</time><p>🎓 Started my PhD at the <strong>University of Vermont</strong> with Dr. Amritanshu Pandey.</p></li>
+      </ul>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="contact__card">
+        <div>
+          <p class="kicker">07 · Contact</p>
+          <h2>Let's solve something hard together</h2>
+          <p>I'm happy to talk about research collaborations, internships, and industry problems in grid optimization, planning, and EV integration.</p>
+          <address>
+            Department of Electrical &amp; Biomedical Engineering<br>
+            University of Vermont, Burlington, VT 05405
+          </address>
+        </div>
+        <div class="contact__links">
+          <a class="btn btn--primary btn--lg" href="mailto:bpanthee@uvm.edu"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-mail"/></svg> bpanthee@uvm.edu</a>
+          <button class="btn btn--ghost" id="copyEmail" data-email="bpanthee@uvm.edu">Copy email</button>
+          <a class="btn" href="https://scholar.google.com/citations?user=nFLG5-MAAAAJ&amp;hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-scholar"/></svg> Google Scholar</a>
+          <a class="btn" href="https://www.linkedin.com/in/bikram-panthee-476bb7138/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-linkedin"/></svg> LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2026</span> Bikram Panthee · Built with plain HTML, CSS &amp; JS · Hosted on GitHub Pages</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- SVG sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo" viewBox="0 0 32 32">
+      <rect x="1" y="1" width="30" height="30" rx="8" fill="var(--accent)"/>
+      <path d="M17.5 5 9 18h6l-1.5 9L23 13.5h-6z" fill="var(--bg)"/>
+    </symbol>
+    <symbol id="ic-scholar" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 1 9l11 7 9-5.7V17h2V9L12 2zm-6 11.2V17c0 2.2 2.7 4 6 4s6-1.8 6-4v-3.8l-6 3.8-6-3.8z"/></symbol>
+    <symbol id="ic-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3V9.5zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.5z"/></symbol>
+    <symbol id="ic-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 5.5h18v13H3z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m3.5 6 8.5 7 8.5-7"/></symbol>
+    <symbol id="ic-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5a10.5 10.5 0 0 0-3.3 20.47c.52.1.72-.23.72-.5v-1.8c-2.93.64-3.55-1.4-3.55-1.4-.48-1.22-1.17-1.54-1.17-1.54-.96-.66.07-.64.07-.64 1.06.07 1.62 1.09 1.62 1.09.94 1.6 2.47 1.14 3.07.87.1-.68.37-1.14.66-1.4-2.34-.27-4.8-1.17-4.8-5.2 0-1.15.41-2.09 1.08-2.83-.1-.27-.47-1.34.1-2.79 0 0 .89-.28 2.9 1.08a10 10 0 0 1 5.28 0c2-1.36 2.9-1.08 2.9-1.08.57 1.45.21 2.52.1 2.79.68.74 1.08 1.68 1.08 2.83 0 4.04-2.46 4.93-4.8 5.19.38.33.71.97.71 1.96v2.9c0 .28.19.61.73.5A10.5 10.5 0 0 0 12 1.5z"/></symbol>
+  </svg>
+
+  <script src="js/publications.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/bnb.js"></script>
+  <script src="js/feeder.js"></script>
+</body>
+</html>
